@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\roomController;
+use App\Http\Controllers\bookingController;
+use App\Http\Controllers\transactionController;
+use App\Http\Controllers\receptionistController;
+use App\Http\Controllers\adminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,17 +20,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('users.index');
-});
+Route::get('/', function () {return view('users.index');})->name('home');
+Route::resource('/room', roomController::class);
 
-Route::middleware(['guest.page'])->group(function(){
-    Route::get('/login',[loginController::class,'index']);
+Route::middleware(['guest.custom'])->group(function () {
+    Route::get('/login',[loginController::class,'index'])->name('login.form');
     Route::post('/login',[loginController::class,'login'])->name('login');
     Route::get('/register',[registerController::class,'index']);
     Route::post('/register',[registerController::class,'register'])->name('register');
 });
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 Route::middleware(['login.required'])->group(function(){
-    
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::resource('/booking', bookingController::class);
+    Route::resource('/transaction', transactionController::class);
+
+    Route::resource('/receptionist', receptionistController::class);
+    Route::resource('/admin', adminController::class);
+
 });
+

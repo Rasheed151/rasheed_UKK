@@ -35,10 +35,9 @@ class loginController extends Controller
                 'user_level' => $data['user']['level'],
             ]);
 
-            // Redirect berdasarkan level user
             switch ($data['user']['level']) {
                 case 1:
-                    return redirect()->route('dashboard');
+                    return redirect()->route('home');
                 case 2:
                     return redirect()->route('room');
                 default:
@@ -53,6 +52,6 @@ class loginController extends Controller
     {
         $request->session()->flush();
 
-        return redirect()->route('dashboard')->with('success', 'Kamu telah logout');
+        return redirect()->route('home')->with('success', 'Kamu telah logout');
     }
 }

@@ -15,21 +15,11 @@ class logginNeeded
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session()->has('user_id')) {
-            if ($request->routeIs('login')) {
-                $level = session('user_level');
-                switch ($level) {
-                    case 1:
-                        return redirect()->route('dashboard');
-                    case 2:
-                        return redirect()->route('room');
-                    default:
-                        return redirect()->route('/');
-                }
-            }
-    
+        if (!session()->has('user_id')) {
+            return redirect()->route('login')->with('error', 'Silakan login dulu');
         }
-        
+
+
         return $next($request);
     }
 }

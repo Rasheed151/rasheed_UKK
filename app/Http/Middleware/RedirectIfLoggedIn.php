@@ -16,19 +16,21 @@ class RedirectIfLoggedIn
     public function handle(Request $request, Closure $next)
     {
         if (session()->has('user_id')) {
-            if ($request->routeIs('login')) {
+            if ($request->routeIs('login.form')) {
                 $level = session('user_level');
                 switch ($level) {
                     case 1:
-                        return redirect()->route('/');
+                        return redirect()->route('home');
                     case 2:
-                        return redirect()->route('/');
+                        return redirect()->route('room');
                     default:
                         return redirect()->route('/');
                 }
             }
+    
         }
-
+        
         return $next($request);
     }
+    
 }

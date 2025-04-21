@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-white">
+<body class="bg-gray-300">
     <!-- Navbar Item -->
     <div class="flex justify-between items-center flex-col md:flex-row bg-gray-900 text-gray-300">
         <div class="col m-8 font-medium text-5xl">
@@ -17,14 +17,16 @@
         <div class="col m-8 font-medium">
             <ul class="flex">
                 <li class="pr-4"><a href="/">Home</a></li>
-                <li class="px-4"><a href="/">Home</a></li>
-                <li class="px-4"><a href="/">Home</a></li>
-                <li class="pl-4"><a href="/">Home</a>
+                <li class="px-4"><a href="/room">Kamar</a></li>
+                <li class="px-4"><a href="/transaction">Riwayat transaksi</a></li>
+                <li class="pl-4">
                     @if (session()->has('user_id'))
-                    <form action="{{ route('logout') }}">
+                    <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit">logout</button>
                     </form>
+                    @else
+                    <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
                     @endif
                 </li>
             </ul>

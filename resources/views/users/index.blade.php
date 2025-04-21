@@ -26,8 +26,8 @@
                 <div class="col m-8 font-medium">
                     <ul class="flex">
                         <li class="pr-4 border-r-2 border-r-black"><a href="/">Home</a></li>
-                        <li class="px-4 border-r-2 border-r-black"><a href="/">Kamar</a></li>
-                        <li class="px-4 border-r-2 border-r-black"><a href="/">Riwayat transaksi</a></li>
+                        <li class="px-4 border-r-2 border-r-black"><a href="/room">Kamar</a></li>
+                        <li class="px-4 border-r-2 border-r-black"><a href="/transaction">Riwayat transaksi</a></li>
                         <li class="pl-4">
                             @if (session()->has('user_id'))
                             <form action="{{ route('logout') }}" method="POST">
