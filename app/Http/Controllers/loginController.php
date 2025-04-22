@@ -39,9 +39,9 @@ class loginController extends Controller
                 case 1:
                     return redirect()->route('home');
                 case 2:
-                    return redirect()->route('room');
-                default:
-                    return redirect('/');
+                    return redirect()->route('receptionist.index');
+                case 3:
+                    return redirect()->route('admin.index');
             }
         } else {
             return back()->withErrors(['login' => $response->json()['message'] ?? 'Gagal login']);

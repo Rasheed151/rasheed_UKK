@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 
-class transactionController extends Controller
+class printController extends Controller
 {
-    private $transaction = "http://localhost:3000/transactions";
+    private $transaction = 'http://localhost:3000/print';
     private $room = "http://localhost:3000/rooms";
     private $room_detail = "http://localhost:3000/room-details";
 
-    function index()
+    function print($id)
     {
         $response = Http::get($this->transaction, [
-            'id' => session('user_id')
+            'id' => $id
         ]);
         $transactions = $response->json();
         $rooms = collect(Http::get($this->room)->json());
@@ -30,21 +31,9 @@ class transactionController extends Controller
             return $item;
         })->values();
 
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('users.print', compact('history'));
 
-        return view('users.transaction', compact('history'));
+        return $pdf->stream('Reservasi hotel.pdf');
     }
 
-    public function update(Request $request, $id)
-    {
-        $response = Http::put($this->transaction, [
-            'id'=>$id,
-            'payment_status' => $request->payment_status,
-        ]);
-
-        if ($response->successful()) {
-            return redirect()->route('transaction.index')->with('success', 'Data berhasil diperbarui');
-        }
-
-        return back()->with('error', 'Gagal memperbarui data');
-    }
 }

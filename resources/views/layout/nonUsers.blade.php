@@ -16,18 +16,11 @@
         </div>
         <div class="col m-8 font-medium">
             <ul class="flex">
-                <li class="pr-4"><a href="/">Home</a></li>
-                <li class="px-4"><a href="/room">Kamar</a></li>
-                <li class="px-4"><a href="/transaction">Riwayat transaksi</a></li>
                 <li class="pl-4">
-                    @if (session()->has('user_id'))
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit">logout</button>
                     </form>
-                    @else
-                    <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-                    @endif
                 </li>
             </ul>
         </div>

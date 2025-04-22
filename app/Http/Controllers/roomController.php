@@ -9,35 +9,44 @@ use function PHPSTORM_META\type;
 
 class roomController extends Controller
 {
-    private $rooms = "http://localhost:3000/rooms";
-    private $room_details =  "http://localhost:3000/room-details";
-    private $transactions =  "http://localhost:3000/transactions";
+    private $room = "http://localhost:3000/rooms";
+    private $room_detail =  "http://localhost:3000/room-details";
 
     public function index(Request $request)
     {
-        $check_in = $request->query('check_in');
-        $check_out = $request->query('check_out');
+        $tanggal1 = $request->query('tanggal1');
+        $tanggal2 = $request->query('tanggal2');
 
-        $room = Http::get($this->rooms)->json();
-        $room_detail = Http::get($this->room_details)->json();
-        $transaction = Http::get($this->transactions)->json();
+        $room = Http::get($this->room)->json();
+        $room_detail = Http::get($this->room_detail)->json();
+        $transactions = Http::get('http://localhost:3000/transactions')->json();
 
-        $roomByType = collect($room)->groupBy('type_id');
-        $room_detail = collect($room_detail)->map(function ($detail) use ($roomByType, $room, $transaction, $check_in, $check_out) {
+        
+        $roomGroupedByType = collect($room)->groupBy('type_id');
+
+        
+        $room_detail = collect($room_detail)->map(function ($detail) use ($roomGroupedByType, $room, $transactions, $tanggal1, $tanggal2) {
             $type_id = $detail['id'];
-            $rooms = $roomByType->get($type_id, collect());
-            $availableRooms = $rooms->filter(function ($room) use ($transaction, $check_in, $check_out) {
+            $rooms = $roomGroupedByType->get($type_id, collect());
+
+            
+            $availableRooms = $rooms->filter(function ($room) use ($transactions, $tanggal1, $tanggal2) {
                 if ($room['status'] != 1) return false; 
-                $roomTransaction = collect($transaction)->where('room_id', $room['id']);
-                foreach ($roomTransaction as $trans) {
+
+                
+                $roomTransactions = collect($transactions)->where('room_id', $room['id']);
+
+                
+                foreach ($roomTransactions as $trans) {
                     if (
-                        ($check_in < $trans['check_out']) &&
-                        ($check_out > $trans['check_in'])
+                        ($tanggal1 < $trans['check_out']) &&
+                        ($tanggal2 > $trans['check_in'])
                     ) {
                         return false; 
                     }
                 }
-                return true;
+
+                return true; 
             });
 
             $detail['available'] = $availableRooms->isNotEmpty();
@@ -47,8 +56,9 @@ class roomController extends Controller
         return view('users.room', [
             'room' => $room,
             'room_detail' => $room_detail,
-            'check_in'=> $check_in,
-            'check_out'=> $check_out
+            'tanggal1'=> $tanggal1,
+            'tanggal2'=> $tanggal2
         ]);
     }
 }
+

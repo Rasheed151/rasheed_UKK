@@ -6,18 +6,19 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class logginNeeded
+class receptionist
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
-        if (!session()->has('user_id')) {
-            return redirect()->route('login')->with('error', 'Silakan login dulu');
+        if (session('user_level') == 1) {
+            return redirect()->route('home')->with('error', 'Maaf,anda tidak bisa mengakses halaman tersebut');
         }
+
 
         return $next($request);
     }

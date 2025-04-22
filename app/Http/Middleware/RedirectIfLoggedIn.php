@@ -22,9 +22,9 @@ class RedirectIfLoggedIn
                     case 1:
                         return redirect()->route('home');
                     case 2:
-                        return redirect()->route('room');
+                        return redirect()->route('receptionist.index');
                     default:
-                        return redirect()->route('/');
+                        return redirect()->route('admin.index');
                 }
             }
     

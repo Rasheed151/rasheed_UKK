@@ -1,4 +1,4 @@
-@extends('layout.gray')
+@extends('layout.users')
 @section('title','Reservasi Kamar')
 @section('content')
 <div class="nav rounded-lg bg-white m-8">
@@ -16,7 +16,7 @@
     @endif
 
     <div class="col">
-        <form action="{{ url('/booking') }}" method="POST">
+        <form action="{{ route('booking.store') }}" method="POST">
             @csrf
             <div class="col flex flex-row">
                 <div class="row m-4 w-1/2">
@@ -40,12 +40,11 @@
                     <input type="hidden" name="room_id" value="{{ $selected_room_id }}">
                 </div>
                 <div class="row m-4 w-1/2">
-                    <label for="payment_method" class="block text-sm font-medium text-gray-700">Metode Pembayaran</label>
-                    <select name="payment_method" required
-                        class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                        <option value="cash">Cash</option>
-                        <option value="ewallet">E-Wallet</option>
-                    </select>
+                    <label class="block text-sm font-medium text-gray-700">Total Harga</label>
+                    <div class="mt-2 w-full p-4 border border-gray-300 rounded-lg bg-gray-100 text-gray-700">
+                        Rp {{ number_format($total_price, 0, ',', '.') }} untuk {{ $nights }} malam
+                    </div>
+                    <input type="hidden" name="total_price" value="{{ $total_price }}">
                 </div>
             </div>
 
@@ -70,64 +69,25 @@
             </div>
 
 
-            <div class="row m-4 w-1/2">
-                <label class="block text-sm font-medium text-gray-700">Total Harga</label>
-                <div class="mt-2 w-full p-4 border border-gray-300 rounded-lg bg-gray-100 text-gray-700">
-                    Rp {{ number_format($total_price, 0, ',', '.') }} untuk {{ $nights }} malam
-                </div>
-                <input type="hidden" name="total_price" value="{{ $total_price }}">
-            </div>
-
-
             <div class="footer flex justify-end border-t-2 my-4">
                 <div class="m-4">
                     <button class="bg-[#06402B] px-4 py-2 rounded-lg font-semibold text-white text-xl">Pesan Sekarang</button>
                 </div>
             </div>
+
+            <input type="text" value="cash" name="payment_method" hidden>
         </form>
     </div>
 
-    <!-- Data Transaksi (hasil read API) -->
-    <!-- <div class="m-4">
-        <h2 class="text-2xl font-bold mb-2">Data Transaksi</h2>
-        <table class="min-w-full border border-gray-300">
-            <thead class="bg-gray-100">
-                <tr>
-                    <th class="border px-4 py-2">ID</th>
-                    <th class="border px-4 py-2">Nama</th>
-                    <th class="border px-4 py-2">Kamar</th>
-                    <th class="border px-4 py-2">Check-in</th>
-                    <th class="border px-4 py-2">Check-out</th>
-                    <th class="border px-4 py-2">Total</th>
-                    <th class="border px-4 py-2">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($transaction as $t)
-                    <tr>
-                        <td class="border px-4 py-2">{{ $t['transaction_id'] }}</td>
-                        <td class="border px-4 py-2">{{ $t['name'] ?? '-' }}</td>
-                        <td class="border px-4 py-2">{{ $t['room_id'] }}</td>
-                        <td class="border px-4 py-2">{{ $t['check_in'] }}</td>
-                        <td class="border px-4 py-2">{{ $t['check_out'] }}</td>
-                        <td class="border px-4 py-2">{{ $t['total_price'] }}</td>
-                        <td class="border px-4 py-2">{{ $t['payment_status'] }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div> -->
-</div>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const checkIn = urlParams.get('check_in');
+            const checkOut = urlParams.get('check_out');
 
-<script>
-    window.addEventListener('DOMContentLoaded', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const checkIn = urlParams.get('check_in');
-        const checkOut = urlParams.get('check_out');
+            if (checkIn) document.getElementById('check_in').value = checkIn;
+            if (checkOut) document.getElementById('check_out').value = checkOut;
+        });
+    </script>
 
-        if (checkIn) document.getElementById('check_in').value = checkIn;
-        if (checkOut) document.getElementById('check_out').value = checkOut;
-    });
-</script>
-
-@endsection
+    @endsection

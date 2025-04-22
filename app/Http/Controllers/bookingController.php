@@ -9,12 +9,13 @@ use Carbon\Carbon;
 class bookingController extends Controller
 {
 
-    private $transactions = "http://localhost:3000/transactions";
-
     public function index(Request $request)
     {
-        $transaction = Http::get($this->transactions)->json();
-        // Ambil parameter check_in dan check_out dari query string
+
+        $transactions = Http::get('http://localhost:3000/transactions')->json();
+
+
+        
         $check_in = $request->query('check_in');
         $check_out = $request->query('check_out');
         $type_id = $request->query('type_id');
@@ -34,9 +35,10 @@ class bookingController extends Controller
         }
         $selected_room_id = $auto_selected_room;
 
-        // Kirim ke view
-        return view('users.booking', compact('transaction', 'check_in', 'check_out', 'selected_room_id', 'total_price', 'nights'));
+        
+        return view('users.booking', compact('transactions', 'check_in', 'check_out', 'selected_room_id', 'total_price', 'nights'));
     }
+
 
     public function store(Request $request)
     {
@@ -59,7 +61,7 @@ class bookingController extends Controller
         $response = Http::post('http://localhost:3000/transactions', $data);
 
         if ($response->successful()) {
-                return redirect()->route('transaction.index')->with('success', 'Reservasi Kamar Telah Berhasil.');
+                return redirect()->route('transaction.index')->with('success', 'Booking berhasil dilakukan dan kamar telah diperbarui.');
         } else {
             return redirect()->back()->with('error', 'Booking gagal.');
         }
@@ -76,6 +78,7 @@ class bookingController extends Controller
                 return $room['id'];
             }
         }
-        return null;
+
+        return null; 
     }
 }

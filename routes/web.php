@@ -7,6 +7,8 @@ use App\Http\Controllers\bookingController;
 use App\Http\Controllers\transactionController;
 use App\Http\Controllers\receptionistController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\SecondAdminController;
+use App\Http\Controllers\printController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,8 +38,25 @@ Route::middleware(['login.required'])->group(function(){
     Route::resource('/booking', bookingController::class);
     Route::resource('/transaction', transactionController::class);
 
-    Route::resource('/receptionist', receptionistController::class);
-    Route::resource('/admin', adminController::class);
+    Route::get('/data_reservasi/{Id}', [printController::class, 'print'])->name('print');
+
+    Route::middleware(['receptionist.required'])->group(function(){
+
+        Route::resource('/receptionist', receptionistController::class);
+    
+    });
+
+    Route::middleware(['admin.required'])->group(function(){
+
+        Route::resource('/admin', adminController::class);
+        Route::resource('/adminRoom', SecondAdminController::class);
+    
+    });
 
 });
+
+
+
+
+
 
