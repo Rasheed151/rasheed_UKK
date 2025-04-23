@@ -1,52 +1,61 @@
-<h2 align="center">Website kantin HEBAT</h2>
-Ini adalah website reservasi hotel yang memungkinkan pengguna melakukan pemesanan hotel secara online. Website ini memiliki tiga jenis role, yaitu:
+<h2 align="center">Website Reservasi hotel</h2>
+Ini adalah website reservasi hotel yang memungkinkan pengguna melakukan pemesanan kamar secara online. Website ini memiliki empat jenis role, yaitu:
 
-Pengguna: dapat melakukan pendaftaran, login, melihat daftar kamar, dan melakukan pemesanan.
+Tamu: dapat melakukan pendaftaran, login, melihat dashboard hotel, dan melihat daftar kamar.
 
-Resepsionis: mengelola data pemesanan dan informasi kamar.
+Pengguna: dapat melakukan pemesanan kamar, melihat riwayat pemesanan, membatalkan pemesanan, dan mencetak bukti pemesanan.
 
-Admin: memiliki wewenang penuh untuk mengelola pengguna, resepsionis, dan data kamar.
+Resepsionis: mengelola data pemesanan dan mengubah status pemesanan.
 
-Catatan: Website ini menggunakan API yang dapat Anda kloning melalui tautan GitHub berikut https://github.com/Rasheed151/rest-api
-<br><h3 align="center">**Fitur Utama**</h3></br>
+Admin: memiliki wewenang penuh untuk mengelola detail setiap tipe kamar, menambahkan kamar baru, serta menonaktifkan kamar.
 
-1. Dashboard Admin
-- Menampilkan data lengkap dari makanan yang ingin di jual.
-- Pantau stok barang yang masih tersisa.
+Catatan: Website ini menggunakan API yang dapat Anda kloning melalui tautan GitHub berikut:
+https://github.com/Rasheed151/rest-api
 
- ![Screenshot 2025-01-21 110012](https://github.com/user-attachments/assets/2d8f1a97-f526-495c-aac9-53f5279440fb)
+<br><h3 align="center">**Tamu**</h3></br>
+
+1. Halaman Registrasi
+- Halaman ini digunakan untuk mendaftarkan akun pengguna baru dan memverifikasi alamat email yang digunakan saat pendaftaran. Proses verifikasi dilakukan dengan mengirimkan tautan (link) aktivasi ke email yang didaftarkan.
+- <img width="1280" alt="Screen Shot 2025-04-23 at 08 47 08" src="https://github.com/user-attachments/assets/118a3118-486e-4561-87a1-78f510c84673" />
+
+
+2. Halaman Pemberitahuan Verifikasi Berhasil
+- Halaman ini ditampilkan saat pengguna berhasil memverifikasi email mereka. Setelah verifikasi berhasil, pengguna akan diarahkan ke halaman ini sebagai konfirmasi bahwa proses verifikasi telah selesai.
+<img width="1280" alt="Screen Shot 2025-04-23 at 08 48 07" src="https://github.com/user-attachments/assets/65a94a95-63d8-4adb-883e-62b83eed4d54" />
+
+   
+3. Halaman Login
+- Halaman login disediakan agar tamu dapat masuk ke dalam sistem dan mengubah rolenya menjadi pengguna, sehingga memperoleh akses yang lebih luas terhadap fitur-fitur website.
+ <img width="1280" alt="Screen Shot 2025-04-22 at 18 49 32" src="https://github.com/user-attachments/assets/5c1a7cf2-2026-4c02-aecf-7b871cbdcfbe" />
  
-2. Daftar transaksi
+4. Dashboard Hotel
+- Menyediakan informasi mengenai fasilitas yang tersedia serta beberapa detail penting terkait hotel.
+<img width="1280" alt="Screen Shot 2025-04-22 at 18 51 20" src="https://github.com/user-attachments/assets/5a28e5fb-63c1-4eb6-818a-80e8f03c6232" />
 
-- Menampilkan daftar transaksi secara lengkap dari nama user yang membeli,barang yang dibeli,jumlah barang yang dibeli,total harga, hingga tanggal dan waktu transaksi.
+5. Halaman Informasi Kamar
+- Halaman ini menampilkan informasi detail mengenai kamar yang tersedia, serta memungkinkan pengguna untuk memilih tanggal check-in dan check-out.
 
- ![Screenshot 2025-01-21 110018](https://github.com/user-attachments/assets/be53e41a-322e-4b57-89b7-e1041269c260)
- 
-3. Menambahkan barang
-- Dapat menambahkan makanan yang ingin ditambahkan ke dalam kantin secara lengkap dan rinci.
-
- ![Screenshot 2025-01-21 110035](https://github.com/user-attachments/assets/cd1e64b3-3997-4f83-9f6a-e60e431de291)
-
-
-<br><h3>**Alur Penggunaan**</h3></br>
+Catatan: Untuk melakukan pemesanan, pengguna harus login terlebih dahulu.
+<img width="1280" alt="Screen Shot 2025-04-22 at 18 51 30" src="https://github.com/user-attachments/assets/48ec484c-619f-4281-b8d1-20f461ae06eb" />
 
 
-1. Halaman Dashboard: Pengguna akan menemui halaman dashboard terlebih dahulu sebelum login. Dihalaman dashboard mengenalkan secara ringkas apa itu kantin HEBAT dan keunggulan yang dimilik kantin HEBAT.
 
-![Screenshot 2025-01-21 105809](https://github.com/user-attachments/assets/67bd43b9-6a2f-4957-a983-c424f451f70e)
-![Screenshot 2025-01-21 105828](https://github.com/user-attachments/assets/1feb4acd-edae-4e73-96ed-a2d1a0b8f222)
+<br><h3 align="center">**Pengguna**</h3></br>
 
-2. Login: Pengguna masuk menggunakan akun yang terdaftar.
+1. Halaman Pemesanan Kamar
+- Setelah melihat berbagai jenis kamar, menentukan tanggal check-in dan check-out, memilih tipe kamar, serta berhasil melakukan login, pengguna akan diarahkan ke halaman ini untuk melanjutkan proses pemesanan.
+<img width="1280" alt="Screen Shot 2025-04-22 at 18 51 42" src="https://github.com/user-attachments/assets/f43bb00a-df0d-4b1a-9101-919355862adb" />
 
- ![Screenshot 2025-01-21 105837](https://github.com/user-attachments/assets/4cc49d77-b619-4546-ae5b-69ff6fd1dfe2)
+2. Riwayat Pemesanan
+- Halaman ini memungkinkan pengguna untuk melihat riwayat pemesanan yang telah dilakukan, termasuk detail pemesanan sebelumnya, serta membatalkan dan mecetak riwayat pemesanan.
+<img width="1280" alt="Screen Shot 2025-04-23 at 09 42 05" src="https://github.com/user-attachments/assets/6d26a7ee-93b8-45c4-9e89-9024bf865723" />
 
-3. Melihat Menu: Pengguna dapat melihat daftar menu yang tersedia, lengkap dengan harga dan jumlah stok yang masih tersedia.
+3. Mencetak Riwayat Pemesanan
+- Setelah melakukan pemesanan, pengguna akan diarahkan ke halaman ini untuk melihat riwayat pemesanan yang telah dilakukan.
+<img width="1280" alt="Screen Shot 2025-04-22 at 18 52 11" src="https://github.com/user-attachments/assets/9c03f6cc-3203-4f44-b921-eb41d25c409d" />
 
- ![Screenshot 2025-01-21 105845](https://github.com/user-attachments/assets/b9b8f83a-5b4f-472d-b573-7dd77139c820)
+  
 
-4. Memesan Makanan: Pilih makanan dan lakukan checkout, masukkan jumlah makanan yang ingin dibeli.
-
-![Screenshot 2025-01-21 105917](https://github.com/user-attachments/assets/bc2a2fa8-62cd-4b51-9e90-9c2118c80ecd)
  
 **Keunggulan Website Kantin HEBAT**
 - Efisiensi Tinggi: Mengurangi antrian di kantin.
