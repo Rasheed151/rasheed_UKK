@@ -1,7 +1,14 @@
 <h2 align="center">Website kantin HEBAT</h2>
-Website Kantin HEBAT adalah platform digital yang dirancang untuk mengelola operasional kantin secara modern, efisien, dan ramah pengguna. Website ini memberikan kemudahan bagi siswa, guru, dan staf sekolah untuk memesan makanan dan minuman, memantau transaksi, dan mengelola stok kantin secara real-time. Dengan fitur yang lengkap, Kantin HEBAT mendukung pengalaman kantin yang lebih nyaman dan terorganisir.
+Ini adalah website reservasi hotel yang memungkinkan pengguna melakukan pemesanan hotel secara online. Website ini memiliki tiga jenis role, yaitu:
 
-<br><h3>**Fitur Utama**</h3></br>
+Pengguna: dapat melakukan pendaftaran, login, melihat daftar kamar, dan melakukan pemesanan.
+
+Resepsionis: mengelola data pemesanan dan informasi kamar.
+
+Admin: memiliki wewenang penuh untuk mengelola pengguna, resepsionis, dan data kamar.
+
+Catatan: Website ini menggunakan API yang dapat Anda kloning melalui tautan GitHub berikut https://github.com/Rasheed151/rest-api
+<br><h3 align="center">**Fitur Utama**</h3></br>
 
 1. Dashboard Admin
 - Menampilkan data lengkap dari makanan yang ingin di jual.
