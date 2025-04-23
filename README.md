@@ -54,6 +54,20 @@ Catatan: Untuk melakukan pemesanan, pengguna harus login terlebih dahulu.
 - Setelah melakukan pemesanan, pengguna akan diarahkan ke halaman ini untuk melihat riwayat pemesanan yang telah dilakukan.
 <img width="1280" alt="Screen Shot 2025-04-22 at 18 52 11" src="https://github.com/user-attachments/assets/9c03f6cc-3203-4f44-b921-eb41d25c409d" />
 
+<br><h3 align="center">**Resepsionis**</h3></br>
+
+1. Dashboard Resepsionis
+- Halaman ini hanya dapat diakses oleh resepsionis dan admin. Fungsinya meliputi penyelesaian pesanan, pembatalan pemesanan, serta pengaktifan kembali pemesanan yang dibatalkan.Selain itu, resepsionis dan admin dapat menyortir data pemesanan berdasarkan nama, tanggal check-in, tanggal check-out, atau keduanya.
+<img width="1280" alt="Screen Shot 2025-04-22 at 18 53 12" src="https://github.com/user-attachments/assets/8cf209ca-ce7d-4f18-b564-7678d7796b1a" />
+
+<br><h3 align="center">**Admin**</h3></br>
+
+1. Dashboard Admin
+- Halaman ini hanya dapat diakses oleh admin. Fungsinya meliputi melihat, menambahkan, mengubah, dan menghapus data tipe kamar. Admin juga dapat menambahkan kamar baru, menonaktifkan atau mengaktifkan kembali kamar yang ada, serta menghapus kamar.
+<img width="1280" alt="Screen Shot 2025-04-22 at 18 55 08" src="https://github.com/user-attachments/assets/df549953-addc-4779-84dd-8f8b195af489" />
+
+
+
   
 
  
