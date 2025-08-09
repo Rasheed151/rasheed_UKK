@@ -66,18 +66,6 @@ Catatan: Untuk melakukan pemesanan, pengguna harus login terlebih dahulu.
 - Halaman ini hanya dapat diakses oleh admin. Fungsinya meliputi melihat, menambahkan, mengubah, dan menghapus data tipe kamar. Admin juga dapat menambahkan kamar baru, menonaktifkan atau mengaktifkan kembali kamar yang ada, serta menghapus kamar.
 <img width="1280" alt="Screen Shot 2025-04-22 at 18 55 08" src="https://github.com/user-attachments/assets/df549953-addc-4779-84dd-8f8b195af489" />
 
-
-
-  
-
- 
-**Keunggulan Website Kantin HEBAT**
-- Efisiensi Tinggi: Mengurangi antrian di kantin.
-- Transparansi: Riwayat transaksi yang mudah diakses.
-- Ramah Lingkungan: Mengurangi penggunaan kertas untuk catatan pesanan.
-
 **Kontak dan Dukungan**
-- Email: akmalrahm768@gmail.com
-- Telepon: +62 85863148617
+- Email: mrasheed.muhyiddien@gmail.com
 ________________________________________
-Dengan website Kantin HEBAT, pengalaman kantin menjadi lebih praktis, modern, dan menyenangkan untuk semua pengguna.
